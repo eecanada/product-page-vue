@@ -10,7 +10,10 @@ const app = Vue.createApp({
       Made up in a 10 oz Brisbane Moss cotton with a subtle brushed texture, the trouser is designed for four season wearing and features a softly napped surface that lends itself to a neater drape seldom seen in a cotton trouser
       
       Made in Naples, Italy.`,
-      image: './assets/images/trousers_olive.jpg'
+      image: './assets/images/trousers_olive.jpg',
+      url: 'https://natalino.co/',
+      inventory: 5,
+      onSale: false
     };
   },
 });
