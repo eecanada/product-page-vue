@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Natalino</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -25,6 +25,15 @@
             <p v-else-if="inventory <=2 && inventory > 0">Almost Sold Out</p>
             <p v-else>Out of Stock</p>
             <p v-if="onSale">On Sale</p>
+            <ul>
+              <li v-for="detail in details">{{detail}}</li>
+            </ul>
+            <div v-for="variant in variants" :key="variant.id">
+              {{variant.color}}
+            </div>
+            <ul>
+              <li v-for="size in sizes">{{size}}</li>
+            </ul>
           </div>
         </div>
       </div>
