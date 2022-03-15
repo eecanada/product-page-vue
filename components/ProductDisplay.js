@@ -49,6 +49,9 @@ app.component('product-display', {
       </button>
     </div>
   </div>
+
+  <review-list v-if="reviews.length" :reviews="reviews"> </review-list>
+  <review-form @review-submitted="addReview"></review-form>
 </div>`,
   data() {
     return {
@@ -85,20 +88,24 @@ app.component('product-display', {
           onSale: true,
         },
       ],
+      reviews: [],
       sizes: ['44S', '46S', '46R', '50S', '50L'],
     };
   },
   methods: {
     addToCart() {
-      this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
     },
     removeFromCart() {
-      this.$emit('remove-from-cart')
+      this.$emit('remove-from-cart');
     },
     updateVariant(index) {
       this.selectedVariant = index;
       console.log(this.selectedVariant);
     },
+    addReview(productReview){
+      this.reviews.push(productReview)
+    }
   },
   computed: {
     title() {
