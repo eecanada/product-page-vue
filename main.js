@@ -24,6 +24,7 @@ const app = Vue.createApp({
           color: 'olive',
           image: './assets/images/trousers_olive.jpg',
           quantity: 3,
+          onSale: false,
         },
         {
           id: 2235,
@@ -31,6 +32,7 @@ const app = Vue.createApp({
           color: 'navy',
           image: './assets/images/trousers_navy.jpg',
           quantity: 5,
+          onSale: true,
         },
       ],
       sizes: ['44S', '46S', '46R', '50S', '50L'],
@@ -57,6 +59,11 @@ const app = Vue.createApp({
     },
     inStock() {
       return this.variants[this.selectedVariant].quantity;
+    },
+    onSale() {
+      if (this.variants[this.selectedVariant].onSale) {
+        return `${this.brand} ${this.product} is on sale`;
+      }
     },
   },
 });
