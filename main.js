@@ -2,7 +2,9 @@ const app = Vue.createApp({
   data() {
     return {
       cart: 0,
-      product: 'Trousers',
+      brand: 'Natalino',
+      product: 'Trouser',
+      selectedVariant: 0,
       description: `
       Our trouser is cut with a high rise designed to be worn on the waist with single reverse pleats for comfort and classic styling.
 
@@ -11,25 +13,24 @@ const app = Vue.createApp({
       Made up in a 10 oz Brisbane Moss cotton with a subtle brushed texture, the trouser is designed for four season wearing and features a softly napped surface that lends itself to a neater drape seldom seen in a cotton trouser
       
       Made in Naples, Italy.`,
-      image: './assets/images/trousers_olive.jpg',
       url: 'https://natalino.co/',
       inventory: 5,
-      inStock: false,
-
-      onSale: false,
+      // onSale: false,
       details: ['100% Cotton', '285g Bisbane Moss', 'Made in Italy'],
       variants: [
         {
           id: 2224,
-          colorCode:'#59503F',
+          colorCode: '#59503F',
           color: 'olive',
           image: './assets/images/trousers_olive.jpg',
+          quantity: 3,
         },
         {
           id: 2235,
           colorCode: '#111B26',
           color: 'navy',
           image: './assets/images/trousers_navy.jpg',
+          quantity: 5,
         },
       ],
       sizes: ['44S', '46S', '46R', '50S', '50L'],
@@ -42,8 +43,20 @@ const app = Vue.createApp({
     removeFromCart() {
       this.cart -= 1;
     },
-    updateImage(variantImage) {
-      this.image = variantImage;
+    updateVariant(index) {
+      this.selectedVariant = index;
+      console.log(this.selectedVariant);
+    },
+  },
+  computed: {
+    title() {
+      return `${this.brand} ${this.product}`;
+    },
+    image() {
+      return this.variants[this.selectedVariant].image;
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].quantity;
     },
   },
 });
