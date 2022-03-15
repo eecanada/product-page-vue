@@ -27,13 +27,26 @@
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
             <div
+              class="color-circle"
+              :class="[!inStock ? 'out-of-stock-img' : '']" 
               v-for="variant in variants"
               :key="variant.id"
               @mouseover="updateImage(variant.image)"
-            >
+              :style="{backgroundColor: variant.colorCode}"
+            > 
               {{ variant.color }}
             </div>
-            <button class="button" v-on:click="addToCart">Add to Cart</button>
+            <button
+              class="button"
+              :class="{disabledButton : !inStock}"
+              :disabled="!inStock"
+              v-on:click="addToCart"
+            >
+              Add to Cart
+            </button>
+            <button class="button" @click="removeFromCart">
+              Remove to Cart
+            </button>
           </div>
         </div>
       </div>

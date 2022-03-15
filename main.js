@@ -14,13 +14,23 @@ const app = Vue.createApp({
       image: './assets/images/trousers_olive.jpg',
       url: 'https://natalino.co/',
       inventory: 5,
-      inStock: true,
+      inStock: false,
 
       onSale: false,
       details: ['100% Cotton', '285g Bisbane Moss', 'Made in Italy'],
       variants: [
-        { id: 2224, color: 'olive',  image: './assets/images/trousers_olive.jpg'},
-        { id: 2235, color: 'navy',  image: './assets/images/trousers_navy.jpg' }, 
+        {
+          id: 2224,
+          colorCode:'#59503F',
+          color: 'olive',
+          image: './assets/images/trousers_olive.jpg',
+        },
+        {
+          id: 2235,
+          colorCode: '#111B26',
+          color: 'navy',
+          image: './assets/images/trousers_navy.jpg',
+        },
       ],
       sizes: ['44S', '46S', '46R', '50S', '50L'],
     };
@@ -29,8 +39,11 @@ const app = Vue.createApp({
     addToCart() {
       this.cart += 1;
     },
-    updateImage(variantImage){
-      this.image = variantImage
-    }
+    removeFromCart() {
+      this.cart -= 1;
+    },
+    updateImage(variantImage) {
+      this.image = variantImage;
+    },
   },
 });
