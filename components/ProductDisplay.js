@@ -3,7 +3,7 @@ app.component('product-display', {
     premium: {
       type: Boolean,
       required: true,
-    }
+    },
   },
   template:
     /*html*/
@@ -17,10 +17,12 @@ app.component('product-display', {
       <h1>{{ title }}</h1>
       <p v-if="inStock">In Stock</p>
       <p v-else>Out of Stock</p>
-      <p> Shipping: {{shipping}} <p>
+      <p> Shipping: {{shipping}} </p>
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
       </ul>
+
+      <product-details :description="description"></product-details>
 
       <div
         class="color-circle"
@@ -52,6 +54,14 @@ app.component('product-display', {
     return {
       brand: 'Natalino',
       product: 'Trouser',
+      description: `
+      Our trouser is cut with a high rise designed to be worn on the waist with single reverse pleats for comfort and classic styling.
+
+      Cut with room around the thigh and a gentle taper for a clean line throughout the leg, they are finished with genuine horn buttons, side adjusters, coin pocket, two rear pockets, and a 5cm cuff.
+    
+      Made up in a 10 oz Brisbane Moss cotton with a subtle brushed texture, the trouser is designed for four season wearing and features a softly napped surface that lends itself to a neater drape seldom seen in a cotton trouser
+    
+      Made in Naples, Italy.`,
       selectedVariant: 0,
       url: 'https://natalino.co/',
       inventory: 5,
@@ -80,10 +90,10 @@ app.component('product-display', {
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     },
     removeFromCart() {
-      this.cart -= 1;
+      this.$emit('remove-from-cart')
     },
     updateVariant(index) {
       this.selectedVariant = index;
