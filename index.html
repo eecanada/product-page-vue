@@ -12,28 +12,28 @@
     <div id="app">
       <div class="nav-bar"></div>
 
+      <div class="cart">Cart({{ cart }})</div>
+
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <a :href="url">
-              <img v-bind:src="image" alt="trousers" />
-            </a>
+            <img v-bind:src="image" />
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
-            <p v-if="inventory >= 5">In Stock</p>
-            <p v-else-if="inventory <=2 && inventory > 0">Almost Sold Out</p>
+            <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
-            <p v-if="onSale">On Sale</p>
             <ul>
-              <li v-for="detail in details">{{detail}}</li>
+              <li v-for="detail in details">{{ detail }}</li>
             </ul>
-            <div v-for="variant in variants" :key="variant.id">
-              {{variant.color}}
+            <div
+              v-for="variant in variants"
+              :key="variant.id"
+              @mouseover="updateImage(variant.image)"
+            >
+              {{ variant.color }}
             </div>
-            <ul>
-              <li v-for="size in sizes">{{size}}</li>
-            </ul>
+            <button class="button" v-on:click="addToCart">Add to Cart</button>
           </div>
         </div>
       </div>

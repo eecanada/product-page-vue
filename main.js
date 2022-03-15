@@ -1,6 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
+      cart: 0,
       product: 'Trousers',
       description: `
       Our trouser is cut with a high rise designed to be worn on the waist with single reverse pleats for comfort and classic styling.
@@ -13,13 +14,23 @@ const app = Vue.createApp({
       image: './assets/images/trousers_olive.jpg',
       url: 'https://natalino.co/',
       inventory: 5,
+      inStock: true,
+
       onSale: false,
       details: ['100% Cotton', '285g Bisbane Moss', 'Made in Italy'],
-      variants: [ 
-        {id:2224, color: 'olive'},
-        {id:2235, color: 'navy'}
+      variants: [
+        { id: 2224, color: 'olive',  image: './assets/images/trousers_olive.jpg'},
+        { id: 2235, color: 'navy',  image: './assets/images/trousers_navy.jpg' }, 
       ],
-      sizes: ['44S', '46S', '46R', '50S', '50L' ]
+      sizes: ['44S', '46S', '46R', '50S', '50L'],
     };
+  },
+  methods: {
+    addToCart() {
+      this.cart += 1;
+    },
+    updateImage(variantImage){
+      this.image = variantImage
+    }
   },
 });
