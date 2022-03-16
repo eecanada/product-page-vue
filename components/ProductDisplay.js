@@ -7,56 +7,55 @@ app.component('product-display', {
   },
   template:
     /*html*/
-    `<div class="product-display">
-  <div class="product-container">
-    <div class="product-image">
-      <img v-bind:src="image" />
+       `
+<div class="product-display">
+    <div class="product-container">
+        <div class="product-image">
+            <img v-bind:src="image" />
+        </div>
+
+        <div class="product-info">
+            <h1 class="title">{{ title }} </h1>
+            <p>{{price}} <span>excl. VAT</span></p>
+
+            <product-details :description="description"></product-details>
+            <p class="none" v-if="inStock">In Stock</p>
+            <p class="none" v-else>Out of Stock</p>
+            <p class="none">Shipping: {{shipping}}</p>
+
+            <br />
+            <ul>
+                <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+
+            <ul class="size-list">
+              <li class="trouser-size" v-for="(size, index) in sizes" :key="index">{{size}}</li>
+            </ul>
+            <div class="circle-selection">
+                <div class="color-circle" :class="[!inStock ? 'out-of-stock-img' : '']" v-for="(variant,index) in variants" :key="variant.id" @mouseover="updateVariant(index)" :style="{backgroundColor: variant.colorCode}">
+                    {{ variant.color }}
+                </div>
+            </div>
+
+            <p>{{onSale}}</p>
+
+            <button class="button" :class="{disabledButton : !inStock}" :disabled="!inStock" v-on:click="addToCart">
+                Add to Cart
+            </button>
+            <button class="button" @click="removeFromCart">
+                Remove to Cart
+            </button>
+        </div>
     </div>
 
-    <div class="product-info">
-      <h1>{{ title }}</h1>
-      <p v-if="inStock">In Stock</p>
-      <p v-else>Out of Stock</p>
-      <p> Shipping: {{shipping}} </p>
-      <ul>
-        <li v-for="detail in details">{{ detail }}</li>
-      </ul>
-
-      <product-details :description="description"></product-details>
-
-      <div
-        class="color-circle"
-        :class="[!inStock ? 'out-of-stock-img' : '']"
-        v-for="(variant,index) in variants"
-        :key="variant.id"
-        @mouseover="updateVariant(index)"
-        :style="{backgroundColor: variant.colorCode}"
-      >
-        {{ variant.color }}
-      </div>
-      <p>{{onSale}}</p>
-
-      <button
-        class="button"
-        :class="{disabledButton : !inStock}"
-        :disabled="!inStock"
-        v-on:click="addToCart"
-      >
-        Add to Cart
-      </button>
-      <button class="button" @click="removeFromCart">
-        Remove to Cart
-      </button>
-    </div>
-  </div>
-
-  <review-list v-if="reviews.length" :reviews="reviews"> </review-list>
-  <review-form @review-submitted="addReview"></review-form>
-</div>`,
+    <review-list v-if="reviews.length" :reviews="reviews"> </review-list>
+    <review-form @review-submitted="addReview"></review-form>
+</div>
+`,
   data() {
     return {
       brand: 'Natalino',
-      product: 'Trouser',
+      product: 'Single Pleat Trouser',
       description: `
       Our trouser is cut with a high rise designed to be worn on the waist with single reverse pleats for comfort and classic styling.
 
@@ -69,27 +68,31 @@ app.component('product-display', {
       url: 'https://natalino.co/',
       inventory: 5,
       // onSale: false,
-      details: ['100% Cotton', '285g Bisbane Moss', 'Made in Italy'],
+      details: ['100% cotton from Brisbane Moss', '285gsm', 'Mercerised for a brushed finish', 'Single reverse pleats', 'Genuine horn buttons', 'Side adjusters', 'Curtained waistband' , 'Reinforced waistband with internal canvas' , 'Coin pocket and two rear pockets', 'Zip closure', 'Bar tack reinforcement', '5cm turn ups (L length is unfinished)', 'Made in Naples, Italy', 'Dry clean only'],
       variants: [
         {
           id: 2224,
           colorCode: '#59503F',
           color: 'olive',
+          title: 'Olive Brush Cotton',
           image: './assets/images/trousers_olive.jpg',
           quantity: 3,
           onSale: false,
+          price: 150.0,
         },
         {
           id: 2235,
           colorCode: '#111B26',
+          title: 'Navy Brush Cotton',
           color: 'navy',
           image: './assets/images/trousers_navy.jpg',
           quantity: 5,
           onSale: true,
+          price: 150.0,
         },
       ],
       reviews: [],
-      sizes: ['44S', '46S', '46R', '50S', '50L'],
+      sizes: ['44S', '46S', '46R', '46L', '48R', '48L', '50S', '50L', '52S', '52R', '54L'],
     };
   },
   methods: {
@@ -103,13 +106,16 @@ app.component('product-display', {
       this.selectedVariant = index;
       console.log(this.selectedVariant);
     },
-    addReview(productReview){
-      this.reviews.push(productReview)
-    }
+    addReview(productReview) {
+      this.reviews.push(productReview);
+    },
   },
   computed: {
     title() {
-      return `${this.brand} ${this.product}`;
+      return `${this.variants[this.selectedVariant].title} - ${this.product}`;
+    },
+    price() {
+      return `$${this.variants[this.selectedVariant].price}`;
     },
     image() {
       return this.variants[this.selectedVariant].image;
@@ -128,5 +134,6 @@ app.component('product-display', {
       }
       return `$27.99`;
     },
+
   },
 });

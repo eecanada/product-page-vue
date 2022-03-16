@@ -8,6 +8,6 @@ app.component('product-details', {
   template:
     /*html*/
     `
-  <p id="description"> {{description}} </p>
+  <p class="" id="description"> {{description}} </p>
   `,
 });
