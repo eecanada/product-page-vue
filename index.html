@@ -83,20 +83,13 @@
     <script src="./components/NavBar.js"></script>
 
     <!-- Mount App -->
+
+    <script>
+      window.parent.document.body.style.zoom = 0.8;
+    </script>
+    
     <script>
       const mountedApp = app.mount('#app');
-    </script>
-
-    <script>
-      function checkZoom() {
-        if (window.screen.width === 1440 && window.screen.height === 776) {
-          window.parent.document.body.style.zoom = 0.8;
-        } else {
-          window.parent.document.body.style.zoom = 1.0;
-        }
-      }
-
-      window.addEventListener('resize', checkZoom);
     </script>
   </body>
 </html>
