@@ -203,7 +203,7 @@ app.component('product-display', {
       return `${this.product} - ${this.variants[this.selectedVariant].title}`;
     },
     price() {
-      return `$${this.variants[this.selectedVariant].price}`;
+      return `£${this.variants[this.selectedVariant].price}`;
     },
     image() {
       return this.variants[this.selectedVariant].image;
