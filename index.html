@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Single Pleat Trouser - </title>
+    <title>Single Pleat Trouser</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
 
-    <!-- Import Tailwind-->
+    <!-- Import Tailwind
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
       @layer utilities {
@@ -16,9 +16,30 @@
           content-visibility: auto;
         }
       }
-    </style>
+    </style> -->
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,11 +50,20 @@
   </head>
   <body>
     <div id="app">
-      <div class="nav-bar">
-        <p> Brexit update: Customers in the UK and EU do not need to pay any additional taxes or duties. The purchase price shown at checkout is the final amount you will pay.</p>
+      <div class="announcement">
+        <p>
+          Brexit update: Customers in the UK and EU do not need to pay any
+          additional taxes or duties. The purchase price shown at checkout is
+          the final amount you will pay.
+        </p> 
+      </div>
+
+      <div>
+        <nav-bar></nav-bar>
       </div>
 
       <div class="cart none">Cart({{ cart.length }})</div>
+
       <product-display
         :premium="premium"
         @add-to-cart="updateCart"
@@ -46,9 +76,11 @@
 
     <!-- Import Component -->
     <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDescription.js"></script>
     <script src="./components/ProductDetails.js"></script>
-    <script src="./components/ReviewForm.js  "></script>
-    <script src="./components/ReviewList.js  "></script>
+    <!-- <script src="./components/ReviewForm.js  "></script>
+    <script src="./components/ReviewList.js  "></script> -->
+    <script src="./components/NavBar.js"></script>
 
     <!-- Mount App -->
     <script>

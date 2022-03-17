@@ -7,7 +7,7 @@ app.component('product-display', {
   },
   template:
     /*html*/
-       `
+    `
 <div class="product-display">
     <div class="product-container">
         <div class="product-image">
@@ -18,21 +18,30 @@ app.component('product-display', {
             <h1 class="title">{{ title }} </h1>
             <p>{{price}} <span>excl. VAT</span></p>
 
-            <product-details :description="description"></product-details>
+            <product-description :description="description"></product-description>
+            <br />
+
+            <product-details :details="details" :fits="fits" :deliveries='deliveries' ></product-details>
             <p class="none" v-if="inStock">In Stock</p>
             <p class="none" v-else>Out of Stock</p>
             <p class="none">Shipping: {{shipping}}</p>
 
             <br />
-            <ul>
-                <li v-for="detail in details">{{ detail }}</li>
-            </ul>
+
+
+            
+
+
+
+
+          
+            
 
             <ul class="size-list">
               <li class="trouser-size" v-for="(size, index) in sizes" :key="index">{{size}}</li>
             </ul>
             <div class="circle-selection">
-                <div class="color-circle" :class="[!inStock ? 'out-of-stock-img' : '']" v-for="(variant,index) in variants" :key="variant.id" @mouseover="updateVariant(index)" :style="{backgroundColor: variant.colorCode}">
+                <div class="color-circle" :class="[!inStock ? 'out-of-stock-img' : '']" v-for="(variant,index) in variants" :key="variant.id" @click="updateVariant(index)" :style="{backgroundColor: variant.colorCode}">
                     {{ variant.color }}
                 </div>
             </div>
@@ -68,7 +77,35 @@ app.component('product-display', {
       url: 'https://natalino.co/',
       inventory: 5,
       // onSale: false,
-      details: ['100% cotton from Brisbane Moss', '285gsm', 'Mercerised for a brushed finish', 'Single reverse pleats', 'Genuine horn buttons', 'Side adjusters', 'Curtained waistband' , 'Reinforced waistband with internal canvas' , 'Coin pocket and two rear pockets', 'Zip closure', 'Bar tack reinforcement', '5cm turn ups (L length is unfinished)', 'Made in Naples, Italy', 'Dry clean only'],
+      details: [
+        '100% cotton from Brisbane Moss',
+        '285gsm',
+        'Mercerised for a brushed finish',
+        'Single reverse pleats',
+        'Genuine horn buttons',
+        'Side adjusters',
+        'Curtained waistband',
+        'Reinforced waistband with internal canvas',
+        'Coin pocket and two rear pockets',
+        'Zip closure',
+        'Bar tack reinforcement',
+        '5cm turn ups (L length is unfinished)',
+        'Made in Naples, Italy',
+        'Dry clean only',
+      ],
+      fits: [
+        'High-waisted, with room in the thigh and a gentle taper from knee down',
+        'View size guide',
+        'Calculate my size',
+      ],
+      deliveries: [
+        'UK and EUR (Zone 1) free shipping on orders > £100 and free returns',
+        'EUR (Zone 2) free shipping on orders > £150',
+        'EUR (Zone 3) and N. America free shipping on orders >£200',
+        'RoW free shipping on orders >£250',
+        'Brexit: UK and EU customers do not need to pay any additional taxes or duties',
+        'For more information, please visit our delivery and returns page',
+      ],
       variants: [
         {
           id: 2224,
@@ -92,7 +129,19 @@ app.component('product-display', {
         },
       ],
       reviews: [],
-      sizes: ['44S', '46S', '46R', '46L', '48R', '48L', '50S', '50L', '52S', '52R', '54L'],
+      sizes: [
+        '44S',
+        '46S',
+        '46R',
+        '46L',
+        '48R',
+        '48L',
+        '50S',
+        '50L',
+        '52S',
+        '52R',
+        '54L',
+      ],
     };
   },
   methods: {
@@ -134,6 +183,5 @@ app.component('product-display', {
       }
       return `$27.99`;
     },
-
   },
 });
