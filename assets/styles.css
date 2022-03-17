@@ -62,19 +62,18 @@ font-family: 'Noto Serif Display', serif; */
 }
 
 .disabledButton {
-  background-color: #EEEBE7;
-  border: 2px solid #EEEBE7;
+  background-color: #eeebe7;
+  border: 2px solid #eeebe7;
   color: #374151;
   cursor: not-allowed;
 }
 
 .disabledButton:hover {
-  background-color: #EEEBE7;
-  border: 2px solid #EEEBE7;
+  background-color: #eeebe7;
+  border: 2px solid #eeebe7;
   color: #374151;
   cursor: not-allowed;
 }
-
 
 .title {
   font-size: 28px;
@@ -214,26 +213,11 @@ ul {
   display: flex;
   flex-direction: row;
   cursor: pointer;
+  flex-wrap: wrap;
 }
 
 .trouser-size {
   margin: 1rem 1rem 1rem 0rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .product-image,
-  .product-info {
-    margin-left: 10px;
-    width: 100%;
-  }
-
-  .review-form {
-    width: 90%;
-  }
 }
 
 #description {
@@ -349,4 +333,79 @@ ul {
   text-decoration: underline;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+
+@media screen and (max-width: 992px) {
+  .social-icons {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  #navbarSupportedContent {
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .nav-item {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .second-menu {
+    display: none;
+  }
+  .announcement {
+    font-size: 10px;
+    height: 50px;
+    margin-bottom: 0.25rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .product-image,
+  .product-info {
+    margin-left: 10px;
+    width: 100%;
+  }
+
+  .review-form {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .product-display {
+    display: flex;
+    flex-direction: row !important;
+    padding: 1rem;
+  }
+
+  .product-display-col {
+    display: flex;
+    flex-direction: column !important;
+    padding: 1rem;
+  }
+
+  .product-container-col {
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap;
+    justify-content: center !important ;
+    align-items: center !important;
+  }
+
+  .product-image-col {
+    width: 90% !important;
+    margin: auto;
+  }
+
+  .product-info-col {
+    width: 85% !important;
+  }
 }

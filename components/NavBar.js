@@ -22,7 +22,7 @@ app.component('nav-bar', {
     <div class="container-fluid  px-6">
        <button class="
           navbar-toggler
-          text-gray-500
+          text-black
           border-0
           hover:shadow-none hover:no-underline
           py-2
@@ -69,7 +69,7 @@ app.component('nav-bar', {
         </div>
   
         <div>
-        <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+        <ul class="navbar-nav flex social-icons flex-col pl-0 list-style-none mr-auto">
         <li class="nav-item pr-2">
         <a href="#" >  <i class="fa-brands fa-spotify"></i>   </a> 
         </li>

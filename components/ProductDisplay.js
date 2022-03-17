@@ -9,12 +9,12 @@ app.component('product-display', {
     /*html*/
     `
 <div class="product-display">
-    <div class="product-container">
-        <div class="product-image">
+    <div class="product-container product-container-col ">
+        <div class="product-image product-image-col ">
             <img v-bind:src="image" />
         </div>
 
-        <div class="product-info">
+        <div class="product-info product-info-col">
             <h1 class="title">{{ title }} </h1>
             <p>{{price}} <span>excl. VAT</span></p>
 
