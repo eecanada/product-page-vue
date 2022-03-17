@@ -55,14 +55,14 @@
           Brexit update: Customers in the UK and EU do not need to pay any
           additional taxes or duties. The purchase price shown at checkout is
           the final amount you will pay.
-        </p> 
+        </p>
       </div>
 
       <div>
         <nav-bar :cart="cart"></nav-bar>
       </div>
 
-      <div class="cart none ">Cart({{ cart.length }})</div>
+      <div class="cart none">Cart({{ cart.length }})</div>
 
       <product-display
         :premium="premium"
@@ -85,6 +85,18 @@
     <!-- Mount App -->
     <script>
       const mountedApp = app.mount('#app');
+    </script>
+
+    <script>
+      function checkZoom() {
+        if (window.screen.width === 1440 && window.screen.height === 900) {
+          window.parent.document.body.style.zoom = 0.8;
+        } else {
+          window.parent.document.body.style.zoom = 1.0;
+        }
+      }
+
+      window.addEventListener('resize', checkZoom);
     </script>
   </body>
 </html>
