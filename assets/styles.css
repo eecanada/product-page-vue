@@ -14,18 +14,31 @@ font-family: 'Merriweather', serif;
 font-family: 'Noto Serif Display', serif; */
 
 .button {
-  margin: 30px;
-  background-color: #39495c;
-  border-radius: 5px;
-  width: 160px;
-  height: 60px;
-  color: white;
-  padding: 20px;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  /* margin: 30px; */
+  background-color: #fbf8f4;
+  border: 2px solid black;
+  /* width: 160px;
+  height: 60px; */
+  font-weight: 300;
+  color: black;
+  padding: 20px 45px;
   text-align: center;
   cursor: pointer;
+  margin-top: 2rem;
+}
+
+.button:hover {
+  /* margin: 30px; */
+  background-color: #000000;
+  border: 2px solid black;
+  /* width: 160px;
+   height: 60px; */
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  padding: 20px 45px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2rem;
 }
 
 .cart {
@@ -45,12 +58,23 @@ font-family: 'Noto Serif Display', serif; */
   margin-top: 8px;
   border: 2px solid #d8d8d8;
   border-radius: 50%;
+  margin-right: 0.25rem;
 }
 
 .disabledButton {
-  background-color: #d8d8d8;
+  background-color: #EEEBE7;
+  border: 2px solid #EEEBE7;
+  color: #374151;
   cursor: not-allowed;
 }
+
+.disabledButton:hover {
+  background-color: #EEEBE7;
+  border: 2px solid #EEEBE7;
+  color: #374151;
+  cursor: not-allowed;
+}
+
 
 .title {
   font-size: 28px;
@@ -130,7 +154,7 @@ p {
 }
 
 .product-info {
-  width: 40%;
+  width: 45%;
 }
 
 .review-form {
@@ -301,12 +325,27 @@ ul {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  .second-menu{
-    display: none
+  .second-menu {
+    display: none;
   }
-  .announcement{
+  .announcement {
     font-size: 10px;
     height: 50px;
-    margin-bottom: .25rem;
+    margin-bottom: 0.25rem;
   }
+}
+
+.on-sale {
+  margin-top: 1rem;
+  color: rgb(239, 68, 68);
+}
+
+.border-bottom-size {
+  border-bottom: 1px solid black;
+}
+
+.size-guide {
+  text-decoration: underline;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }

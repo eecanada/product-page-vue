@@ -109,7 +109,10 @@ app.component('product-details', {
      </ul>
         </div>
      </div>
+
+    
   </div>
+ 
 </div>
   `,
 });

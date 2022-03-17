@@ -1,4 +1,10 @@
 app.component('nav-bar', {
+  props: {
+    cart: {
+      type: Array,
+      required: true,
+    },
+  },
   /*html*/
   template: `
   <nav class="
@@ -41,8 +47,8 @@ app.component('nav-bar', {
           <!-- Left links -->
         <div>
         <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-             <li class="nav-item px-2">
-                <a class="nav-link  text-black	" aria-current="page" href="#">Collection </a>
+             <li class="nav-item pr-2">
+                <a class="nav-link  text-black hover:text-gray-700 focus:text-gray-700 	" aria-current="page" href="#">Collection </a>
              </li>
              <li class="nav-item pr-2">
                 <a class="nav-link text-black	hover:text-gray-700 focus:text-gray-700 p-0" href="#">About </a>
@@ -64,14 +70,14 @@ app.component('nav-bar', {
   
         <div>
         <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-        <li class="nav-item px-2">
+        <li class="nav-item pr-2">
         <a href="#" >  <i class="fa-brands fa-spotify"></i>   </a> 
         </li>
         <li class="nav-item pr-2">
         <a href="#" >  <i class="fa-brands fa-instagram"></i>  </a>      
         </li>
         <li class="nav-item pr-2">
-           <span  class='text-gray-300' > ( </span> 1   <span class='text-gray-300'> ) </span>
+           <span  class='text-gray-300'  >(</span>{{cart.length}}<span class='text-gray-300'>)</span>
         </li>
      </ul>
         </div>
@@ -88,9 +94,9 @@ app.component('nav-bar', {
     </div>
 
     <div class="second-menu">
-    <ul class="navbar-nav nav-item-secondary flex flex-row justify-center pl-0 list-style-none mr-auto">
+    <ul class="navbar-nav nav-item-secondary flex flex-row justify-center pl-0 list-style-none mr-auto italic">
          <li class="nav-item  pr-2">
-            <a class="nav-link   text-zinc-400	" aria-current="page" href="#">All </a>
+            <a class="nav-link   text-zinc-400 	hover:text-zinc-300 focus:text-gray-700	" aria-current="page" href="#">All </a>
          </li>
          <li class="nav-item pr-2">
             <a class="nav-link text-zinc-400	hover:text-zinc-300 focus:text-gray-700 p-0" href="#">Polo Shirts </a>

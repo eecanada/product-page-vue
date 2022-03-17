@@ -59,10 +59,10 @@
       </div>
 
       <div>
-        <nav-bar></nav-bar>
+        <nav-bar :cart="cart"></nav-bar>
       </div>
 
-      <div class="cart none">Cart({{ cart.length }})</div>
+      <div class="cart none ">Cart({{ cart.length }})</div>
 
       <product-display
         :premium="premium"

@@ -18,40 +18,43 @@ app.component('product-display', {
             <h1 class="title">{{ title }} </h1>
             <p>{{price}} <span>excl. VAT</span></p>
 
+          
+
+            <p class="none" v-if="inStock">In Stock</p>
+            <p class="on-sale" v-else>Out of Stock</p>
+            <p class="none">Shipping: {{shipping}}</p>
+
+            <p class='on-sale'>{{onSale}}</p>
+
             <product-description :description="description"></product-description>
             <br />
 
             <product-details :details="details" :fits="fits" :deliveries='deliveries' ></product-details>
-            <p class="none" v-if="inStock">In Stock</p>
-            <p class="none" v-else>Out of Stock</p>
-            <p class="none">Shipping: {{shipping}}</p>
+           
 
             <br />
 
-
-            
-
-
-
-
-          
+            <p class='size-guide'>   <a href="#">View size guide </a> </p>
             
 
             <ul class="size-list">
-              <li class="trouser-size" v-for="(size, index) in sizes" :key="index">{{size}}</li>
+              <li v-on:click="addBorderBottom(index)"  class="trouser-size"  :class="[activeIndex == index ? 'border-bottom-size' : '']" v-for="(size, index) in sizes" :key="index">{{size}}</li>
             </ul>
+
+           
+
             <div class="circle-selection">
                 <div class="color-circle" :class="[!inStock ? 'out-of-stock-img' : '']" v-for="(variant,index) in variants" :key="variant.id" @click="updateVariant(index)" :style="{backgroundColor: variant.colorCode}">
-                    {{ variant.color }}
+                 
                 </div>
             </div>
 
-            <p>{{onSale}}</p>
+            
 
             <button class="button" :class="{disabledButton : !inStock}" :disabled="!inStock" v-on:click="addToCart">
                 Add to Cart
             </button>
-            <button class="button" @click="removeFromCart">
+            <button class="button none" @click="removeFromCart">
                 Remove to Cart
             </button>
         </div>
@@ -73,6 +76,7 @@ app.component('product-display', {
       Made up in a 10 oz Brisbane Moss cotton with a subtle brushed texture, the trouser is designed for four season wearing and features a softly napped surface that lends itself to a neater drape seldom seen in a cotton trouser
     
       Made in Naples, Italy.`,
+      activeIndex: undefined,
       selectedVariant: 0,
       url: 'https://natalino.co/',
       inventory: 5,
@@ -110,7 +114,7 @@ app.component('product-display', {
         {
           id: 2224,
           colorCode: '#59503F',
-          color: 'olive',
+          color: 'Olive',
           title: 'Olive Brush Cotton',
           image: './assets/images/trousers_olive.jpg',
           quantity: 3,
@@ -118,13 +122,43 @@ app.component('product-display', {
           price: 150.0,
         },
         {
-          id: 2235,
+          id: 2225,
           colorCode: '#111B26',
           title: 'Navy Brush Cotton',
-          color: 'navy',
+          color: 'Navy',
           image: './assets/images/trousers_navy.jpg',
           quantity: 5,
           onSale: true,
+          price: 119.0,
+        },
+        {
+          id: 2226,
+          colorCode: '#BDAF9B',
+          color: 'Beige',
+          title: 'Beige Brush Cotton',
+          image: './assets/images/trousers_beige.jpg',
+          quantity: 3,
+          onSale: false,
+          price: 150.0,
+        },
+        {
+          id: 2227,
+          colorCode: '#4E4D52',
+          color: 'Mid Grey',
+          title: 'Mid Grey Woollen Flannel',
+          image: './assets/images/trousers_midgrey.jpg',
+          quantity: 3,
+          onSale: false,
+          price: 196.0,
+        },
+        {
+          id: 2228,
+          colorCode: '#EADDCB',
+          color: 'Stone',
+          title: 'Stone Brush Cotton',
+          image: './assets/images/trousers_stone.jpg',
+          quantity: 0,
+          onSale: false,
           price: 150.0,
         },
       ],
@@ -158,10 +192,14 @@ app.component('product-display', {
     addReview(productReview) {
       this.reviews.push(productReview);
     },
+    addBorderBottom(index){
+      this.activeIndex = index
+      console.log(this.activeIndex)
+    }
   },
   computed: {
     title() {
-      return `${this.variants[this.selectedVariant].title} - ${this.product}`;
+      return `${this.product} - ${this.variants[this.selectedVariant].title}`;
     },
     price() {
       return `$${this.variants[this.selectedVariant].price}`;
@@ -174,7 +212,7 @@ app.component('product-display', {
     },
     onSale() {
       if (this.variants[this.selectedVariant].onSale) {
-        return `${this.brand} ${this.product} is on sale`;
+        return `${this.title} is on sale`;
       }
     },
     shipping() {
