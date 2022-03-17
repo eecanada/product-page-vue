@@ -76,7 +76,7 @@ app.component('product-display', {
       Made up in a 10 oz Brisbane Moss cotton with a subtle brushed texture, the trouser is designed for four season wearing and features a softly napped surface that lends itself to a neater drape seldom seen in a cotton trouser
     
       Made in Naples, Italy.`,
-      activeIndex: undefined,
+      activeIndex: 0,
       selectedVariant: 0,
       url: 'https://natalino.co/',
       inventory: 5,
@@ -132,15 +132,16 @@ app.component('product-display', {
           price: 119.0,
         },
         {
-          id: 2226,
-          colorCode: '#BDAF9B',
-          color: 'Beige',
-          title: 'Beige Brush Cotton',
-          image: './assets/images/trousers_beige.jpg',
-          quantity: 3,
+          id: 2228,
+          colorCode: '#EADDCB',
+          color: 'Stone',
+          title: 'Stone Brush Cotton',
+          image: './assets/images/trousers_stone.jpg',
+          quantity: 0,
           onSale: false,
           price: 150.0,
         },
+
         {
           id: 2227,
           colorCode: '#4E4D52',
@@ -152,12 +153,12 @@ app.component('product-display', {
           price: 196.0,
         },
         {
-          id: 2228,
-          colorCode: '#EADDCB',
-          color: 'Stone',
-          title: 'Stone Brush Cotton',
-          image: './assets/images/trousers_stone.jpg',
-          quantity: 0,
+          id: 2226,
+          colorCode: '#BDAF9B',
+          color: 'Beige',
+          title: 'Beige Brush Cotton',
+          image: './assets/images/trousers_beige.jpg',
+          quantity: 3,
           onSale: false,
           price: 150.0,
         },
@@ -192,10 +193,10 @@ app.component('product-display', {
     addReview(productReview) {
       this.reviews.push(productReview);
     },
-    addBorderBottom(index){
-      this.activeIndex = index
-      console.log(this.activeIndex)
-    }
+    addBorderBottom(index) {
+      this.activeIndex = index;
+      console.log(this.activeIndex);
+    },
   },
   computed: {
     title() {
