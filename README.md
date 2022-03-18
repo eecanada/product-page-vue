@@ -4,7 +4,7 @@
  
 # Description
  
-- Natalino is a beautiful and responsive product page for trousers. A user can product to cart, view page on mobile, and select different product variations. 
+- Natalino is a beautiful and responsive product page for trousers. A user can products to cart, view page on mobile, and select different product variations. 
  
 # Technologies Used
  
