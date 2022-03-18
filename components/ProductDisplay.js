@@ -20,7 +20,7 @@ app.component('product-display', {
 
           
 
-            <p class="none" v-if="inStock">In Stock</p>
+            <p class="none" v-if="inStock">Just one left</p>
             <p class="on-sale" v-else>Out of Stock</p>
             <p class="none">Shipping: {{shipping}}</p>
 
